@@ -8,6 +8,7 @@ import { ExamPaper } from "./pages/ExamPaper";
 import { Score } from "./pages/Score";
 import { About } from "./pages/About";
 import { Classes } from "./pages/Classes";
+import { Leaderboard } from "./pages/Leaderboard";
 
 // Layout wrapper to conditionally render Navbar
 const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
@@ -35,6 +36,7 @@ const App: React.FC = () => {
           <Route path="/score" element={<Score />} />
           <Route path="/about" element={<About />} />
           <Route path="/classes" element={<Classes />} />
+          <Route path="/leaderboard" element={<Leaderboard />} />
         </Routes>
       </Layout>
     </HashRouter>
