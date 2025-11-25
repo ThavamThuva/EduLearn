@@ -26,3 +26,15 @@ export interface ScoreData {
   percentage: number;
   timestamp: string;
 }
+
+export interface ClassSession {
+  id: string;
+  subjectId: string; // matches SubjectData id key (e.g. 'Maths')
+  title: string;
+  instructor: string;
+  startTime: string; // ISO string
+  duration: string;
+  platform: string;
+  meetingLink: string; // URL to meeting link
+  registrationLink: string; // URL to Google Form
+}
