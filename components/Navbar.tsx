@@ -1,6 +1,6 @@
-import React from 'react';
-import { Link, useLocation } from 'react-router-dom';
-import { GraduationCap } from 'lucide-react';
+import React from "react";
+import { Link, useLocation } from "react-router-dom";
+import { GraduationCap } from "lucide-react";
 
 export const Navbar: React.FC = () => {
   const location = useLocation();
@@ -16,21 +16,41 @@ export const Navbar: React.FC = () => {
               <div className="bg-blue-600 p-2 rounded-lg group-hover:bg-blue-700 transition-colors">
                 <GraduationCap className="h-6 w-6 text-white" />
               </div>
-              <span className="font-bold text-xl text-slate-800 tracking-tight">EduLearn</span>
+              <span className="font-bold text-xl text-slate-800 tracking-tight">
+                EduLearn
+              </span>
             </Link>
           </div>
           <div className="flex items-center space-x-8">
-            <Link 
-              to="/" 
-              className={`text-sm font-medium transition-colors ${isActive('/') ? 'text-blue-600' : 'text-slate-600 hover:text-slate-900'}`}
+            <Link
+              to="/"
+              className={`text-sm font-medium transition-colors ${
+                isActive("/")
+                  ? "text-blue-600"
+                  : "text-slate-600 hover:text-slate-900"
+              }`}
             >
               Home
             </Link>
-            <Link 
-              to="/exams" 
-              className={`text-sm font-medium transition-colors ${isActive('/exams') ? 'text-blue-600' : 'text-slate-600 hover:text-slate-900'}`}
+            <Link
+              to="/exams"
+              className={`text-sm font-medium transition-colors ${
+                isActive("/exams")
+                  ? "text-blue-600"
+                  : "text-slate-600 hover:text-slate-900"
+              }`}
             >
               Exams
+            </Link>
+            <Link
+              to="/about"
+              className={`text-sm font-medium transition-colors ${
+                isActive("/about")
+                  ? "text-blue-600"
+                  : "text-slate-600 hover:text-slate-900"
+              }`}
+            >
+              About
             </Link>
           </div>
         </div>
