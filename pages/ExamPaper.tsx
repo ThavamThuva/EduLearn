@@ -1,12 +1,12 @@
-import React, { useState, useEffect } from 'react';
-import { useParams, useNavigate } from 'react-router-dom';
-import { EXAMS } from '../data/exams';
-import { CheckCircle2, AlertCircle } from 'lucide-react';
+import React, { useState, useEffect } from "react";
+import { useParams, useNavigate } from "react-router-dom";
+import { EXAMS } from "../data/exams";
+import { CheckCircle2, AlertCircle } from "lucide-react";
 
 export const ExamPaper: React.FC = () => {
   const { subjectId } = useParams<{ subjectId: string }>();
   const navigate = useNavigate();
-  
+
   const [answers, setAnswers] = useState<Record<number, number>>({});
   const [error, setError] = useState<string | null>(null);
 
@@ -15,16 +15,16 @@ export const ExamPaper: React.FC = () => {
 
   useEffect(() => {
     if (!subject) {
-      navigate('/exams');
+      navigate("/exams");
     }
   }, [subject, navigate]);
 
   if (!subject) return null;
 
   const handleOptionSelect = (questionId: number, optionIndex: number) => {
-    setAnswers(prev => ({
+    setAnswers((prev) => ({
       ...prev,
-      [questionId]: optionIndex
+      [questionId]: optionIndex,
     }));
     // Clear error if user interacts
     if (error) setError(null);
@@ -32,7 +32,7 @@ export const ExamPaper: React.FC = () => {
 
   const calculateScore = () => {
     let score = 0;
-    subject.questions.forEach(q => {
+    subject.questions.forEach((q) => {
       if (answers[q.id] === q.answer) {
         score++;
       }
@@ -42,28 +42,30 @@ export const ExamPaper: React.FC = () => {
 
   const handleSubmit = () => {
     // Validate all answered
-    const allAnswered = subject.questions.every(q => answers[q.id] !== undefined);
-    
+    const allAnswered = subject.questions.every(
+      (q) => answers[q.id] !== undefined
+    );
+
     if (!allAnswered) {
       setError("Please answer all questions before submitting.");
-      window.scrollTo({ top: 0, behavior: 'smooth' });
+      window.scrollTo({ top: 0, behavior: "smooth" });
       return;
     }
 
     const score = calculateScore();
     const total = subject.questions.length;
-    
+
     // Save to localStorage
     const scoreData = {
       subject: subject.title,
       score,
       total,
       percentage: (score / total) * 100,
-      timestamp: new Date().toISOString()
+      timestamp: new Date().toISOString(),
     };
-    
-    localStorage.setItem('latestScore', JSON.stringify(scoreData));
-    navigate('/score');
+
+    localStorage.setItem("latestScore", JSON.stringify(scoreData));
+    navigate("/score");
   };
 
   return (
@@ -72,12 +74,18 @@ export const ExamPaper: React.FC = () => {
       <div className="bg-white border-b border-slate-200 sticky top-16 z-30 shadow-sm">
         <div className="max-w-3xl mx-auto px-4 py-4 flex items-center justify-between">
           <div>
-            <h1 className="text-xl font-bold text-slate-900">{subject.title} Exam</h1>
-            <p className="text-sm text-slate-500">Answer all {subject.questions.length} questions</p>
+            <h1 className="text-xl font-bold text-slate-900">
+              {subject.title} Exam
+            </h1>
+            <p className="text-sm text-slate-500">
+              Answer all {subject.questions.length} questions
+            </p>
           </div>
           <div className="hidden sm:block text-right">
-             <div className="text-sm font-medium text-slate-900">Time Remaining</div>
-             <div className="text-xs text-slate-500">No time limit</div>
+            <div className="text-sm font-medium text-slate-900">
+              Time Remaining
+            </div>
+            <div className="text-xs text-slate-500">No time limit</div>
           </div>
         </div>
       </div>
@@ -92,7 +100,10 @@ export const ExamPaper: React.FC = () => {
 
         <div className="space-y-8">
           {subject.questions.map((q, index) => (
-            <div key={q.id} className="bg-white rounded-2xl p-6 sm:p-8 border border-slate-200 shadow-sm">
+            <div
+              key={q.id}
+              className="bg-white rounded-2xl p-6 sm:p-8 border border-slate-200 shadow-sm"
+            >
               <div className="flex items-start gap-4 mb-6">
                 <div className="flex-shrink-0 w-8 h-8 bg-slate-100 rounded-full flex items-center justify-center font-bold text-slate-600 text-sm">
                   {index + 1}
@@ -106,26 +117,40 @@ export const ExamPaper: React.FC = () => {
                 {q.options.map((option, optIndex) => {
                   const isSelected = answers[q.id] === optIndex;
                   return (
-                    <label 
+                    <label
                       key={optIndex}
                       className={`
                         relative flex items-center p-4 rounded-xl border-2 cursor-pointer transition-all duration-200
-                        ${isSelected 
-                          ? 'border-blue-600 bg-blue-50' 
-                          : 'border-slate-100 hover:border-slate-200 hover:bg-slate-50'}
+                        ${
+                          isSelected
+                            ? "border-green-600 bg-green-50"
+                            : "border-slate-100 hover:border-slate-200 hover:bg-slate-50"
+                        }
                       `}
                     >
-                      <input 
-                        type="radio" 
-                        name={`question-${q.id}`} 
+                      <input
+                        type="radio"
+                        name={`question-${q.id}`}
                         className="sr-only"
                         onChange={() => handleOptionSelect(q.id, optIndex)}
                         checked={isSelected}
                       />
-                      <div className={`w-5 h-5 rounded-full border flex items-center justify-center mr-3 transition-colors ${isSelected ? 'border-blue-600 bg-blue-600' : 'border-slate-300'}`}>
-                        {isSelected && <div className="w-2 h-2 bg-white rounded-full" />}
+                      <div
+                        className={`w-5 h-5 rounded-full border flex items-center justify-center mr-3 transition-colors ${
+                          isSelected
+                            ? "border-green-600 bg-green-600"
+                            : "border-slate-300"
+                        }`}
+                      >
+                        {isSelected && (
+                          <div className="w-2 h-2 bg-white rounded-full" />
+                        )}
                       </div>
-                      <span className={`font-medium ${isSelected ? 'text-blue-900' : 'text-slate-700'}`}>
+                      <span
+                        className={`font-medium ${
+                          isSelected ? "text-green-900" : "text-slate-700"
+                        }`}
+                      >
                         {option}
                       </span>
                     </label>
@@ -139,7 +164,7 @@ export const ExamPaper: React.FC = () => {
         <div className="mt-12 flex justify-end">
           <button
             onClick={handleSubmit}
-            className="w-full sm:w-auto px-8 py-4 bg-slate-900 text-white rounded-xl font-bold text-lg hover:bg-blue-600 transition-colors shadow-lg hover:shadow-xl focus:ring-4 focus:ring-blue-200"
+            className="w-full sm:w-auto px-8 py-4 bg-green-600 text-white rounded-xl font-bold text-lg hover:bg-green-700 transition-colors shadow-lg hover:shadow-xl focus:ring-4 focus:ring-green-200"
           >
             Submit Exam
           </button>

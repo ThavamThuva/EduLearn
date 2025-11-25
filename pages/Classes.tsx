@@ -170,13 +170,13 @@ export const Classes: React.FC = () => {
                   {!isRegistered ? (
                     <button
                       onClick={() => handleRegister(cls)}
-                      className="px-5 py-2.5 bg-white border border-blue-600 text-blue-600 rounded-xl font-semibold hover:bg-blue-50 transition-colors text-center flex items-center justify-center gap-2"
+                      className="px-5 py-2.5 bg-white border border-green-600 text-green-600 rounded-xl font-semibold hover:bg-green-50 transition-colors text-center flex items-center justify-center gap-2"
                     >
                       <span>Register</span>
                       <ExternalLink className="w-4 h-4" />
                     </button>
                   ) : (
-                    <div className="px-5 py-2.5 bg-green-50 border border-green-200 text-green-700 rounded-xl font-medium flex items-center justify-center gap-2 cursor-default">
+                    <div className="px-5 py-2.5 bg-emerald-50 border border-emerald-200 text-emerald-700 rounded-xl font-medium flex items-center justify-center gap-2 cursor-default">
                       <CheckCircle className="w-4 h-4" />
                       Registered
                     </div>
@@ -190,7 +190,7 @@ export const Classes: React.FC = () => {
                       px-5 py-2.5 rounded-xl font-semibold flex items-center justify-center gap-2 transition-all min-w-[140px]
                       ${
                         canJoin
-                          ? "bg-blue-600 text-white hover:bg-blue-700 shadow-lg shadow-blue-200 hover:shadow-xl hover:-translate-y-0.5"
+                          ? "bg-green-600 text-white hover:bg-green-700 shadow-lg shadow-green-200 hover:shadow-xl hover:-translate-y-0.5"
                           : "bg-slate-100 text-slate-400 cursor-not-allowed border border-slate-200"
                       }
                     `}

@@ -62,7 +62,7 @@ export const About: React.FC = () => {
             </p>
           </div>
           <div className="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm">
-            <div className="w-12 h-12 bg-green-100 rounded-xl flex items-center justify-center text-green-600 mb-4">
+            <div className="w-12 h-12 bg-emerald-100 rounded-xl flex items-center justify-center text-emerald-600 mb-4">
               <Shield className="w-6 h-6" />
             </div>
             <h3 className="text-lg font-bold text-slate-900 mb-2">
@@ -102,7 +102,7 @@ export const About: React.FC = () => {
                   type="text"
                   id="name"
                   required
-                  className="w-full px-4 py-2 rounded-xl border border-slate-300 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-all"
+                  className="w-full px-4 py-2 rounded-xl border border-slate-300 focus:ring-2 focus:ring-green-500 focus:border-green-500 outline-none transition-all"
                   value={formData.name}
                   onChange={(e) =>
                     setFormData({ ...formData, name: e.target.value })
@@ -120,7 +120,7 @@ export const About: React.FC = () => {
                   type="email"
                   id="email"
                   required
-                  className="w-full px-4 py-2 rounded-xl border border-slate-300 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-all"
+                  className="w-full px-4 py-2 rounded-xl border border-slate-300 focus:ring-2 focus:ring-green-500 focus:border-green-500 outline-none transition-all"
                   value={formData.email}
                   onChange={(e) =>
                     setFormData({ ...formData, email: e.target.value })
@@ -138,7 +138,7 @@ export const About: React.FC = () => {
                   id="message"
                   required
                   rows={4}
-                  className="w-full px-4 py-2 rounded-xl border border-slate-300 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-all resize-none"
+                  className="w-full px-4 py-2 rounded-xl border border-slate-300 focus:ring-2 focus:ring-green-500 focus:border-green-500 outline-none transition-all resize-none"
                   value={formData.message}
                   onChange={(e) =>
                     setFormData({ ...formData, message: e.target.value })
@@ -148,7 +148,7 @@ export const About: React.FC = () => {
 
               <button
                 type="submit"
-                className="inline-flex items-center justify-center px-6 py-3 bg-blue-600 text-white font-semibold rounded-xl hover:bg-blue-700 transition-all focus:ring-4 focus:ring-blue-200 disabled:opacity-70 disabled:cursor-not-allowed"
+                className="inline-flex items-center justify-center px-6 py-3 bg-green-600 text-white font-semibold rounded-xl hover:bg-green-700 transition-all focus:ring-4 focus:ring-green-200 disabled:opacity-70 disabled:cursor-not-allowed"
                 disabled={isSubmitted}
               >
                 {isSubmitted ? (
